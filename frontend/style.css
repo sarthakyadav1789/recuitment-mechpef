@@ -1,0 +1,992 @@
+/* =============================================
+   MECHAPEF — INDUSTRIAL DARK THEME
+   Fonts: Bebas Neue + Share Tech Mono + Barlow
+   Palette: near-black / rust-orange / amber
+   ============================================= */
+
+:root {
+  --bg:        #0a0a0a;
+  --bg2:       #111111;
+  --bg3:       #1a1a1a;
+  --surface:   #1e1e1e;
+  --border:    #2a2a2a;
+  --accent:    #ff3c00;
+  --accent2:   #ffaa00;
+  --text:      #e8e0d0;
+  --muted:     #888880;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-body:    'Barlow', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* NOISE OVERLAY */
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: .03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(10,10,10,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.gear-icon { display: inline-block; color: var(--accent); }
+.spin-slow { animation: spin 8s linear infinite; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  display: block;
+  transition: .3s;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,60,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,60,0,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-content {
+  max-width: 640px;
+  z-index: 2;
+  animation: fadeUp .8s ease both;
+}
+
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  line-height: .95;
+  margin-bottom: 1.2rem;
+}
+
+.hero-title .line1 { font-size: clamp(4rem, 10vw, 8rem); display: block; }
+.hero-title .line2 { font-size: clamp(4rem, 10vw, 8rem); display: block; color: var(--muted); }
+.hero-title .line3 { font-size: clamp(4rem, 10vw, 8rem); display: block; }
+
+.accent-text { color: var(--accent); }
+.accent { color: var(--accent); }
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--muted);
+  letter-spacing: 4px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 3px;
+  padding: .8rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.btn-primary:hover { background: #e63500; transform: translateY(-2px); }
+
+.btn-outline {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 3px;
+  padding: .8rem 2rem;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── HERO VISUAL ── */
+.hero-visual {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.rotating-gear {
+  position: absolute;
+  color: var(--accent);
+  opacity: .15;
+}
+
+.gear-large { width: 320px; height: 320px; top: 0; left: 0; animation: spin 20s linear infinite; }
+.gear-small { width: 160px; height: 160px; top: 100px; left: 180px; animation: spin 12s linear infinite reverse; color: var(--accent2); }
+
+/* ── SECTIONS SHARED ── */
+section { padding: 6rem 2.5rem; }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--accent);
+  letter-spacing: 4px;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
+.section-header p {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-top: .75rem;
+}
+
+/* ── SHOWCASE ── */
+.showcase-section { background: var(--bg); }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ── CONCEPT CARD ── */
+.concept-card {
+  position: relative;
+  height: 420px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border);
+  backface-visibility: hidden;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-back {
+  background: var(--bg3);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  border-color: var(--accent);
+}
+
+.concept-card:hover .card-front { transform: rotateY(-180deg); }
+.concept-card:hover .card-back  { transform: rotateY(0deg); }
+
+.card-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+.card-info {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.card-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+}
+
+.card-tag {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  margin-top: .2rem;
+}
+
+.card-hint {
+  position: absolute;
+  bottom: 80px;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  opacity: .5;
+}
+
+.card-back h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.card-back p {
+  font-size: .9rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.card-back ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.card-back ul li {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+.card-back-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: .8rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: .3rem .7rem;
+  opacity: .6;
+}
+
+/* ── GEAR VISUAL ── */
+.gear-system {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.g1 { position: absolute; width: 110px; height: 110px; top: 5px; left: 5px; }
+.g2 { position: absolute; width: 80px; height: 80px; top: 55px; left: 70px; }
+.g1 svg, .g2 svg { width: 100%; height: 100%; }
+
+.spin-cw  { animation: spin 4s linear infinite; }
+.spin-ccw { animation: spin 6s linear infinite reverse; }
+
+/* ── ENGINE VISUAL ── */
+.piston-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cylinder {
+  width: 60px;
+  height: 100px;
+  border: 3px solid var(--accent);
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #1a0a00 0%, #0a0500 100%);
+}
+
+.piston {
+  width: 54px;
+  height: 28px;
+  background: linear-gradient(180deg, #888 0%, #444 100%);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  animation: pistonMove 1.2s ease-in-out infinite;
+}
+
+.spark {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  background: #ffaa00;
+  border-radius: 50%;
+  animation: spark 1.2s ease-in-out infinite;
+  box-shadow: 0 0 8px #ffaa00;
+}
+
+.crankshaft-rod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crank-circle {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #666;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 1.2s linear infinite;
+}
+
+.crank-pin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── CNC VISUAL ── */
+.cnc-animation {
+  position: relative;
+  width: 180px;
+  height: 130px;
+}
+
+.cnc-table {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  height: 80px;
+  background: var(--bg3);
+  border: 2px solid #333;
+  border-radius: 2px;
+}
+
+.cnc-workpiece {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background: linear-gradient(90deg, #555, #888, #555);
+  top: 20px;
+  left: 30px;
+  border-radius: 2px;
+}
+
+.cnc-path {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 0;
+  height: 4px;
+  background: var(--accent);
+  animation: cncCut 3s linear infinite;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.cnc-head {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 40px;
+  height: 35px;
+  background: #333;
+  border: 2px solid #555;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cncMove 3s linear infinite;
+}
+
+.cnc-spindle {
+  width: 10px;
+  height: 20px;
+  background: var(--accent2);
+  border-radius: 0 0 3px 3px;
+  animation: spin .3s linear infinite;
+}
+
+.cnc-coords {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.coord {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: 1px;
+}
+
+.x-coord { color: #ff4444; }
+.y-coord { color: #44ff44; }
+.z-coord { color: #4444ff; }
+
+/* ── ROBOT VISUAL ── */
+.robot-arm {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.arm-base {
+  width: 40px;
+  height: 16px;
+  background: linear-gradient(180deg, #666, #333);
+  border-radius: 3px;
+  position: absolute;
+  bottom: 0;
+}
+
+.arm-link1 {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(-40deg);
+  animation: armSwing1 3s ease-in-out infinite;
+  width: 10px;
+  height: 55px;
+  background: linear-gradient(0deg, #777, #444);
+  border-radius: 3px;
+}
+
+.arm-link2 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: top center;
+  transform: translateX(-50%) rotate(60deg);
+  animation: armSwing2 3s ease-in-out infinite;
+  width: 8px;
+  height: 45px;
+  background: linear-gradient(0deg, #888, #555);
+  border-radius: 3px;
+}
+
+.arm-link3 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: top center;
+  transform: translateX(-50%) rotate(-30deg);
+  animation: armSwing3 3s ease-in-out infinite;
+  width: 6px;
+  height: 30px;
+  background: linear-gradient(0deg, var(--accent), #aa2200);
+  border-radius: 3px;
+}
+
+.arm-ee {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--accent2);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent2);
+}
+
+/* ── HYDRAULICS VISUAL ── */
+.hydraulic-system {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hyd-cylinder {
+  width: 30px;
+  height: 90px;
+  border: 3px solid #555;
+  border-radius: 3px;
+  position: relative;
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+.hyd-piston-rod {
+  width: 10px;
+  height: 50px;
+  background: linear-gradient(180deg, #888, #555);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pistonPump 2s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+.fluid-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fluid-flow {
+  width: 50px;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent, #1a6aff, transparent);
+  animation: fluidFlow 1.5s linear infinite;
+}
+
+.fl2 { animation-direction: reverse; background: linear-gradient(90deg, transparent, #00aaff, transparent); }
+
+.hyd-pump {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg2);
+}
+
+.pump-impeller {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #1a6aff;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+
+/* ── THERMO VISUAL ── */
+.thermo-display {
+  position: relative;
+  width: 150px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.heat-gradient {
+  width: 90px;
+  height: 100px;
+  position: relative;
+  background: radial-gradient(ellipse at center, rgba(255,60,0,.3) 0%, transparent 70%);
+  border-radius: 4px;
+}
+
+.heat-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: particleFloat 2s ease-in-out infinite;
+}
+
+.p1 { left: 20px; top: 70px; animation-delay: 0s; }
+.p2 { left: 50px; top: 65px; animation-delay: .4s; background: var(--accent2); }
+.p3 { left: 35px; top: 60px; animation-delay: .8s; }
+.p4 { left: 15px; top: 50px; animation-delay: .2s; background: var(--accent2); }
+.p5 { left: 60px; top: 55px; animation-delay: .6s; }
+
+.thermo-meter {
+  width: 20px;
+  height: 90px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+.thermo-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(0deg, var(--accent), var(--accent2));
+  animation: thermoFill 3s ease-in-out infinite;
+  border-radius: 0 0 8px 8px;
+}
+
+/* ── REGISTER SECTION ── */
+.register-section { background: var(--bg2); }
+
+.register-container {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.form-panel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.form-header {
+  padding: 1rem 1.5rem;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+
+.form-tag {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+.form-body { padding: 2rem; }
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: .5rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: .95rem;
+  padding: .75rem 1rem;
+  outline: none;
+  transition: border-color .2s;
+  border-radius: 0;
+  appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus { border-color: var(--accent); }
+
+.form-group select { cursor: pointer; }
+
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: background .2s, transform .15s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.btn-submit:hover { background: #cc3000; }
+.btn-submit:active { transform: scale(.98); }
+
+.form-status {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  letter-spacing: 1px;
+  min-height: 1.5rem;
+}
+
+.status-ok  { color: #44ff88; }
+.status-err { color: var(--accent); }
+
+/* ── REGISTER INFO ── */
+.register-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-block {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.info-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+.info-block strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: .25rem;
+}
+
+.info-block p {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* ── RECORDS SECTION ── */
+.records-section { background: var(--bg); }
+
+.table-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .75rem 1.25rem;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+
+.table-count {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.btn-refresh {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: 2px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: .4rem .8rem;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+
+.btn-refresh:hover { border-color: var(--accent); color: var(--accent); }
+
+.table-wrapper { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background: var(--surface);
+  border-bottom: 2px solid var(--accent);
+}
+
+th {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-align: left;
+  padding: 1rem 1.25rem;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+
+tbody tr:hover { background: var(--surface); }
+
+td {
+  padding: .85rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem !important;
+  font-size: .85rem !important;
+  letter-spacing: 2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.footer-inner { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .5rem;
+}
+
+footer p {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.footer-ig { color: var(--accent) !important; margin-top: .5rem; }
+
+/* ── KEYFRAMES ── */
+@keyframes spin         { to { transform: rotate(360deg); } }
+@keyframes fadeUp       { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform:none; } }
+@keyframes pistonMove   { 0%,100% { top: 5px; } 50% { top: 65px; } }
+@keyframes spark        { 0%,100% { opacity:1; } 50% { opacity:0; transform:scale(2); } }
+@keyframes cncCut       { 0% { width:0; left:30px; } 60% { width:100px; left:30px; } 100% { width:100px; left:30px; } }
+@keyframes cncMove      { 0%,100% { left: 20px; } 60% { left: 110px; } }
+@keyframes armSwing1    { 0%,100% { transform:translateX(-50%) rotate(-40deg); } 50% { transform:translateX(-50%) rotate(-10deg); } }
+@keyframes armSwing2    { 0%,100% { transform:translateX(-50%) rotate(60deg); } 50% { transform:translateX(-50%) rotate(20deg); } }
+@keyframes armSwing3    { 0%,100% { transform:translateX(-50%) rotate(-30deg); } 50% { transform:translateX(-50%) rotate(50deg); } }
+@keyframes fluidFlow    { from { background-position: -50px 0; } to { background-position: 50px 0; } }
+@keyframes pistonPump   { 0%,100% { height:20px; } 50% { height:60px; } }
+@keyframes particleFloat{ 0%   { transform:translateY(0) scale(1); opacity:1; }
+                          100% { transform:translateY(-60px) scale(0); opacity:0; } }
+@keyframes thermoFill   { 0%,100% { height:20%; } 50% { height:85%; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { flex-direction: column; text-align: center; gap: 2rem; padding-top: 7rem; }
+  .hero-cta-group { justify-content: center; }
+  .hero-visual { width: 250px; height: 250px; }
+  .gear-large { width: 220px; height: 220px; }
+  .gear-small { width: 110px; height: 110px; top: 70px; left: 120px; }
+  .register-container { grid-template-columns: 1fr; }
+  .register-info { display: none; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: .9rem 1.2rem; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left:0; width:100%; background:var(--bg2); padding:1rem; border-bottom:1px solid var(--border); }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  section { padding: 4rem 1.2rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .hero-title .line1, .hero-title .line2, .hero-title .line3 { font-size: 3.5rem; }
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MechaPEF — Mechanical Showcase</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NOISE OVERLAY -->
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="gear-icon">⚙</span>
+    <span>MECHA<span class="accent">PEF</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#showcase">SHOWCASE</a></li>
+    <li><a href="#register">REGISTER</a></li>
+    <li><a href="#registrations">RECORDS</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <p class="hero-tag">MOTILAL NEHRU NATIONAL INSTITUTE OF TECHNOLOGY · PRAYAGRAJ</p>
+    <h1 class="hero-title">
+      <span class="line1">MECHANICAL</span>
+      <span class="line2">ENGINEERING</span>
+      <span class="line3 accent-text">FORUM</span>
+    </h1>
+    <p class="hero-sub">Precision. Power. Innovation.</p>
+    <div class="hero-cta-group">
+      <a href="#showcase" class="btn-primary">EXPLORE MACHINES</a>
+      <a href="#register" class="btn-outline">JOIN AN EVENT</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="rotating-gear gear-large">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <use href="#gear-svg"/>
+      </svg>
+    </div>
+    <div class="rotating-gear gear-small">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <use href="#gear-svg"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SVG DEFS -->
+<svg style="display:none">
+  <defs>
+    <symbol id="gear-svg" viewBox="0 0 200 200">
+      <path fill="none" stroke="currentColor" stroke-width="6"
+        d="M100,30 L108,10 L120,10 L128,30 A72,72,0,0,1,155,55 L175,47 L185,57 L177,77 A72,72,0,0,1,170,100 L190,108 L190,120 L170,128 A72,72,0,0,1,155,155 L163,175 L153,185 L133,177 A72,72,0,0,1,100,170 L92,190 L80,190 L72,170 A72,72,0,0,1,45,155 L25,163 L15,153 L23,133 A72,72,0,0,1,30,100 L10,92 L10,80 L30,72 A72,72,0,0,1,45,45 L37,25 L47,15 L67,23 A72,72,0,0,1,100,30Z"/>
+      <circle fill="none" stroke="currentColor" stroke-width="6" cx="100" cy="100" r="35"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- SHOWCASE SECTION -->
+<section id="showcase" class="showcase-section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>MECHANICAL <span class="accent">CONCEPTS</span></h2>
+    <p>Hover or tap each card to explore the concept</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- CARD 1: GEARS -->
+    <article class="concept-card" data-concept="gears">
+      <div class="card-front">
+        <div class="card-visual gears-visual">
+          <div class="gear-system">
+            <div class="g1 spin-cw">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#ff3c00" stroke-width="4"/>
+              <circle cx="50" cy="50" r="12" fill="none" stroke="#ff3c00" stroke-width="3"/>
+              <rect x="46" y="5" width="8" height="18" rx="3" fill="#ff3c00"/>
+              <rect x="46" y="77" width="8" height="18" rx="3" fill="#ff3c00"/>
+              <rect x="5" y="46" width="18" height="8" rx="3" fill="#ff3c00"/>
+              <rect x="77" y="46" width="18" height="8" rx="3" fill="#ff3c00"/>
+              <rect x="15" y="15" width="8" height="18" rx="3" fill="#ff3c00" transform="rotate(45,50,50) translate(-50,-50) translate(50,50)"/>
+              </svg>
+            </div>
+            <div class="g2 spin-ccw">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="22" fill="none" stroke="#ffaa00" stroke-width="3"/>
+              <circle cx="50" cy="50" r="8" fill="none" stroke="#ffaa00" stroke-width="2"/>
+              <rect x="47" y="10" width="6" height="14" rx="2" fill="#ffaa00"/>
+              <rect x="47" y="76" width="6" height="14" rx="2" fill="#ffaa00"/>
+              <rect x="10" y="47" width="14" height="6" rx="2" fill="#ffaa00"/>
+              <rect x="76" y="47" width="14" height="6" rx="2" fill="#ffaa00"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>GEAR SYSTEMS</h3>
+          <p class="card-tag">POWER TRANSMISSION</p>
+        </div>
+        <div class="card-hint">HOVER TO REVEAL</div>
+      </div>
+      <div class="card-back">
+        <h3>GEAR SYSTEMS</h3>
+        <p>Gears are toothed mechanical components that transmit rotational force (torque) and change speed ratios between shafts. A gear pair with a 2:1 ratio doubles torque while halving speed — the fundamental trade-off in mechanical power transmission.</p>
+        <ul>
+          <li>⚙ Spur, Helical, Bevel & Worm types</li>
+          <li>⚙ Used in gearboxes, watches, mills</li>
+          <li>⚙ Efficiency up to 99% in precision sets</li>
+        </ul>
+        <div class="card-back-badge">MECH 101</div>
+      </div>
+    </article>
+
+    <!-- CARD 2: IC ENGINE -->
+    <article class="concept-card" data-concept="engine">
+      <div class="card-front">
+        <div class="card-visual engine-visual">
+          <div class="piston-animation">
+            <div class="cylinder">
+              <div class="piston"></div>
+              <div class="spark"></div>
+            </div>
+            <div class="crankshaft-rod">
+              <div class="crank-circle">
+                <div class="crank-pin"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>IC ENGINE</h3>
+          <p class="card-tag">THERMODYNAMICS</p>
+        </div>
+        <div class="card-hint">HOVER TO REVEAL</div>
+      </div>
+      <div class="card-back">
+        <h3>IC ENGINE</h3>
+        <p>Internal Combustion Engines convert chemical energy of fuel into mechanical work through controlled explosions inside cylinders. The 4-stroke Otto cycle — intake, compression, power, exhaust — is the backbone of automotive propulsion.</p>
+        <ul>
+          <li>🔥 4-stroke & 2-stroke variants</li>
+          <li>🔥 Petrol, Diesel, CNG fuel types</li>
+          <li>🔥 Thermal efficiency ~25-40%</li>
+        </ul>
+        <div class="card-back-badge">THERMO</div>
+      </div>
+    </article>
+
+    <!-- CARD 3: CNC MACHINES -->
+    <article class="concept-card" data-concept="cnc">
+      <div class="card-front">
+        <div class="card-visual cnc-visual">
+          <div class="cnc-animation">
+            <div class="cnc-table">
+              <div class="cnc-workpiece"></div>
+              <div class="cnc-path"></div>
+            </div>
+            <div class="cnc-head">
+              <div class="cnc-spindle"></div>
+            </div>
+          </div>
+          <div class="cnc-coords">
+            <span class="coord x-coord">X: <span id="xval">0.000</span></span>
+            <span class="coord y-coord">Y: <span id="yval">0.000</span></span>
+            <span class="coord z-coord">Z: <span id="zval">0.000</span></span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>CNC MACHINES</h3>
+          <p class="card-tag">PRECISION MANUFACTURING</p>
+        </div>
+        <div class="card-hint">HOVER TO REVEAL</div>
+      </div>
+      <div class="card-back">
+        <h3>CNC MACHINES</h3>
+        <p>Computer Numerical Control machines execute pre-programmed sequences of machining operations with micron-level precision. G-code instructions direct multi-axis movements of cutting tools to shape metals, plastics, and composites.</p>
+        <ul>
+          <li>🔩 Tolerances of ±0.001 mm</li>
+          <li>🔩 3, 4 and 5-axis configurations</li>
+          <li>🔩 Used in aerospace, auto & medical</li>
+        </ul>
+        <div class="card-back-badge">MFG</div>
+      </div>
+    </article>
+
+    <!-- CARD 4: ROBOTICS -->
+    <article class="concept-card" data-concept="robotics">
+      <div class="card-front">
+        <div class="card-visual robot-visual">
+          <div class="robot-arm">
+            <div class="arm-base"></div>
+            <div class="arm-link1">
+              <div class="arm-link2">
+                <div class="arm-link3">
+                  <div class="arm-ee"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>ROBOTICS</h3>
+          <p class="card-tag">MECHATRONICS</p>
+        </div>
+        <div class="card-hint">HOVER TO REVEAL</div>
+      </div>
+      <div class="card-back">
+        <h3>ROBOTICS</h3>
+        <p>Industrial robots combine mechanical linkages, actuators, sensors, and control algorithms to automate complex tasks. Forward and inverse kinematics govern how joint angles translate to end-effector position in 3D workspace.</p>
+        <ul>
+          <li>🤖 6-DOF articulated arms</li>
+          <li>🤖 Welding, painting, assembly tasks</li>
+          <li>🤖 Position accuracy < 0.05 mm</li>
+        </ul>
+        <div class="card-back-badge">AUTO</div>
+      </div>
+    </article>
+
+    <!-- CARD 5: HYDRAULICS -->
+    <article class="concept-card" data-concept="hydraulics">
+      <div class="card-front">
+        <div class="card-visual hydraulics-visual">
+          <div class="hydraulic-system">
+            <div class="hyd-cylinder">
+              <div class="hyd-piston-rod"></div>
+            </div>
+            <div class="fluid-lines">
+              <div class="fluid-flow fl1"></div>
+              <div class="fluid-flow fl2"></div>
+            </div>
+            <div class="hyd-pump">
+              <div class="pump-impeller spin-cw"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>HYDRAULICS</h3>
+          <p class="card-tag">FLUID MECHANICS</p>
+        </div>
+        <div class="card-hint">HOVER TO REVEAL</div>
+      </div>
+      <div class="card-back">
+        <h3>HYDRAULICS</h3>
+        <p>Hydraulic systems transmit power via pressurized fluid (Pascal's Law). A small input force on a small piston generates a large output force on a larger piston — the principle behind excavators, brakes, and industrial presses.</p>
+        <ul>
+          <li>💧 Pressures up to 700 bar</li>
+          <li>💧 Excavators, cranes, aircraft actuators</li>
+          <li>💧 Power density far exceeds electric motors</li>
+        </ul>
+        <div class="card-back-badge">FLUID</div>
+      </div>
+    </article>
+
+    <!-- CARD 6: THERMODYNAMICS -->
+    <article class="concept-card" data-concept="thermo">
+      <div class="card-front">
+        <div class="card-visual thermo-visual">
+          <div class="thermo-display">
+            <div class="heat-gradient">
+              <div class="heat-particle p1"></div>
+              <div class="heat-particle p2"></div>
+              <div class="heat-particle p3"></div>
+              <div class="heat-particle p4"></div>
+              <div class="heat-particle p5"></div>
+            </div>
+            <div class="thermo-meter">
+              <div class="thermo-fill"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>THERMODYNAMICS</h3>
+          <p class="card-tag">ENERGY SYSTEMS</p>
+        </div>
+        <div class="card-hint">HOVER TO REVEAL</div>
+      </div>
+      <div class="card-back">
+        <h3>THERMODYNAMICS</h3>
+        <p>Thermodynamics governs energy conversion and transfer in mechanical systems. The four laws establish principles of heat, work, and entropy — underpinning power cycles like Rankine (steam turbines) and Brayton (jet engines).</p>
+        <ul>
+          <li>🌡 Carnot efficiency limits all heat engines</li>
+          <li>🌡 Rankine cycle powers 80% of global electricity</li>
+          <li>🌡 Entropy always increases in real processes</li>
+        </ul>
+        <div class="card-back-badge">ENERGY</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- REGISTRATION SECTION -->
+<section id="register" class="register-section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>EVENT <span class="accent">REGISTRATION</span></h2>
+    <p>Register for upcoming MechaPEF events</p>
+  </div>
+
+  <div class="register-container">
+    <div class="form-panel">
+      <div class="form-header">
+        <span class="form-tag">// PARTICIPANT INTAKE FORM</span>
+      </div>
+      <div class="form-body">
+        <div class="form-group">
+          <label for="reg-name">FULL NAME</label>
+          <input type="text" id="reg-name" placeholder="Enter your full name" autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label for="reg-email">EMAIL ADDRESS</label>
+          <input type="email" id="reg-email" placeholder="your@email.com" autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label for="reg-event">EVENT NAME</label>
+          <select id="reg-event">
+            <option value="">— Select an Event —</option>
+            <option>MechQuest 2026</option>
+            <option>RoboWars Championship</option>
+            <option>CAD Design Sprint</option>
+            <option>Manufacturing Conclave</option>
+            <option>Thermodynamics Olympiad</option>
+            <option>CNC Programming Hackathon</option>
+          </select>
+        </div>
+        <button class="btn-submit" onclick="registerParticipant()">
+          <span class="btn-text">SUBMIT REGISTRATION</span>
+          <span class="btn-icon">→</span>
+        </button>
+        <div id="form-status" class="form-status"></div>
+      </div>
+    </div>
+    <div class="register-info">
+      <div class="info-block">
+        <span class="info-icon">📌</span>
+        <div>
+          <strong>MNNIT Allahabad, Prayagraj</strong>
+          <p>Department of Mechanical & Production Engineering</p>
+        </div>
+      </div>
+      <div class="info-block">
+        <span class="info-icon">⚡</span>
+        <div>
+          <strong>Instant Confirmation</strong>
+          <p>All registrations are logged in real-time</p>
+        </div>
+      </div>
+      <div class="info-block">
+        <span class="info-icon">🔐</span>
+        <div>
+          <strong>Secure & Stored</strong>
+          <p>Data stored securely in MongoDB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATIONS TABLE -->
+<section id="registrations" class="records-section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>REGISTERED <span class="accent">PARTICIPANTS</span></h2>
+    <p>All event registrations on record</p>
+  </div>
+
+  <div class="table-container">
+    <div class="table-toolbar">
+      <span class="table-count">Loading records...</span>
+      <button class="btn-refresh" onclick="loadRegistrations()">↻ REFRESH</button>
+    </div>
+    <div class="table-wrapper">
+      <table id="reg-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>EVENT</th>
+            <th>REGISTERED AT</th>
+          </tr>
+        </thead>
+        <tbody id="reg-tbody">
+          <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="gear-icon spin-slow">⚙</span>
+      MECHA<span class="accent">PEF</span>
+    </div>
+    <p>Mechanical & Production Engineering Forum</p>
+    <p>Motilal Nehru National Institute of Technology, Allahabad · Prayagraj</p>
+    <p class="footer-ig">📸 @mechapef_mnnit</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
